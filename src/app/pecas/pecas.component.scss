@@ -1,20 +1,13 @@
-table {
-  width: 100%;
+.container-drawer {
+  height: 100%;
 
-  .codigo {
-    width: 10%;
+  .menu {
+    padding: 20px;
+    width: 220px;
   }
 
-  .nome {
-    width: 30%;
-  }
-
-  .descricao {
-    width: 50%;
-  }
-
-  .acoes {
-    width: 10%;
+  .conteudo {
+    padding: 50px 20px;
   }
 }
 

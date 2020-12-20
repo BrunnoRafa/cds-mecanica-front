@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs/operators';
 
 import { PecasService } from './pecas.service';
 import { Pecas } from './pecas.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pecas',
@@ -38,8 +39,8 @@ export class PecasComponent implements OnInit, AfterViewInit {
         });
   }
 
-  editar(): void {
-    alert('clicou e')
+  editar(id: string): void {
+    alert('a');
   }
 
   excluir(): void {
