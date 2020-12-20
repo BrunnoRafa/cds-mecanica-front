@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabelaComponent } from './tabela/tabela.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    TabelaComponent
-  ],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
   ],
   exports: [
-    TabelaComponent
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }

@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs/operators';
 
 import { PecasService } from './pecas.service';
+import { Pecas } from './pecas.interface';
 
 @Component({
   selector: 'app-pecas',
@@ -11,8 +12,8 @@ import { PecasService } from './pecas.service';
   styleUrls: ['./pecas.component.scss']
 })
 export class PecasComponent implements OnInit, AfterViewInit {
+  dataSource = new MatTableDataSource<Pecas>([])
   displayedColumns: string[] = ['id', 'nome', 'descricao', 'acoes'];
-  dataSource = new MatTableDataSource<PeriodicElement>([])
 
   constructor(private pecasService: PecasService) { }
 
@@ -29,7 +30,7 @@ export class PecasComponent implements OnInit, AfterViewInit {
   listarPecas(): void {
     this.pecasService.listar()
       .pipe(take(1))
-      .subscribe((pecas: any) => {
+      .subscribe((pecas: Pecas[]) => {
         this.dataSource.data = pecas
       },
         (error: any) => {
@@ -44,11 +45,4 @@ export class PecasComponent implements OnInit, AfterViewInit {
   excluir(): void {
     alert('clicou ex')
   }
-}
-
-export interface PeriodicElement {
-  nome: string;
-  id: number;
-  descricao: number;
-  acoes: string;
 }

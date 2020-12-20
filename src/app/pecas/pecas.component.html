@@ -9,7 +9,7 @@
         [dataSource]="dataSource"
         class="tabela"
       >
-        <!-- Position Column -->
+        <!-- Coluna Id -->
         <ng-container matColumnDef="id">
           <th
             mat-header-cell
@@ -21,7 +21,7 @@
             *matCellDef="let element"
           > {{element.id}} </td>
         </ng-container>
-        <!-- Name Column -->
+        <!-- Coluna Nome -->
         <ng-container matColumnDef="nome">
           <th
             mat-header-cell
@@ -33,7 +33,7 @@
             *matCellDef="let element"
           > {{element.nome}} </td>
         </ng-container>
-        <!-- Weight Column -->
+        <!-- Coluna Descrição -->
         <ng-container matColumnDef="descricao">
           <th
             mat-header-cell
@@ -45,7 +45,7 @@
             *matCellDef="let element"
           > {{element.descricao}} </td>
         </ng-container>
-        <!-- Symbol Column -->
+        <!-- Coluna Ações -->
         <ng-container matColumnDef="acoes">
           <th
             mat-header-cell
