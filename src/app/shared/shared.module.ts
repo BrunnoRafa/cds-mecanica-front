@@ -7,6 +7,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalComponent } from './modal/modal.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [ModalComponent],
@@ -15,7 +18,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule
   ],
   exports: [
     MatCardModule,
@@ -23,6 +28,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatPaginatorModule,
     MatIconModule,
     MatSidenavModule,
+    MatButtonModule,
 
     ModalComponent
   ]

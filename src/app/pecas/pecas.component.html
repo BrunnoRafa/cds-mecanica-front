@@ -4,16 +4,18 @@
     opened
     class="menu"
   >
-    <h1>Peças</h1>
+    <h1 class="titulo">Peças</h1>
     <nav>
-      <a
-        routerLink="lista"
-        routerLinkActive="selected"
-      >Tabela de Peças</a> <br>
-      <a
-        routerLink="cadastro"
-        routerLinkActive="selected"
-      >Cadastrar nova Peças</a>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('lista')"
+      >Tabela de Peças</button>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('cadastro')"
+      >Cadastrar nova Peças</button>
     </nav>
   </mat-drawer>
   <mat-drawer-content class="conteudo">

@@ -22,3 +22,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
+.container-drawer {
+  height: 100%;
+
+  .menu {
+    padding: 20px;
+    width: 220px;
+
+    .titulo {
+      margin-bottom: 50px;
+    }
+
+    .btn-menu {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  .conteudo {
+    padding: 50px 20px;
+  }
+}
+
