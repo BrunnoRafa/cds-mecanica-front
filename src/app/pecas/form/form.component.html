@@ -1,3 +1,47 @@
-<mat-card class="card">
-  <p>form works!</p>
-</mat-card>
+<form
+  class="form"
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field
+    *ngIf="isEditar"
+    class="form-campo form-large-col1 form-full-col8"
+  >
+    <mat-label>Id</mat-label>
+    <input
+      matInput
+      [disabled]="isEditar"
+      formControlName="id"
+      placeholder="Id"
+    >
+  </mat-form-field>
+  <mat-form-field class="form-campo form-large-col2 form-full-col8">
+    <mat-label>Nome</mat-label>
+    <input
+      matInput
+      formControlName="nome"
+      placeholder="Nome"
+    >
+  </mat-form-field>
+  <mat-form-field class="form-campo form-large-col4 form-full-col8">
+    <mat-label>Descrição</mat-label>
+    <input
+      matInput
+      formControlName="descricao"
+      placeholder="Descrição"
+    >
+  </mat-form-field>
+  <div class="form-footer">
+    <button
+      mat-raised-button
+      *ngIf="!isEditar"
+      (click)="limpar()"
+      class="btn-footer"
+    >Limpar</button>
+    <button
+      mat-raised-button
+      type="submit"
+      class="btn-footer"
+    >Salvar</button>
+  </div>
+</form>

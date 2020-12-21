@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./pecas.component.scss']
 })
 export class PecasComponent {
+  titulo_card = 'Peças';
 
   constructor(private router: Router) { }
 
   navegar(rota: string): void {
+    this.titulo_card = rota === 'cadastro' ? 'Peças / Cadastro' : 'Peças';
     this.router.navigate([`/pecas/${rota}`]);
   }
 }

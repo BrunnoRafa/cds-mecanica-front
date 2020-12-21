@@ -8,27 +8,32 @@ import { MatIconModule } from '@angular/material/icon';
 import { ModalComponent } from './modal/modal.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-
-
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ModalComponent],
   imports: [
     CommonModule,
-    MatCardModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatButtonModule
-  ],
-  exports: [
+    ReactiveFormsModule,
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
+    MatInputModule,
+
+  ],
+  exports: [
+    ReactiveFormsModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatInputModule,
 
     ModalComponent
   ]

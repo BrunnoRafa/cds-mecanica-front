@@ -7,6 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   box-sizing: border-box;
 }
 
+// Area principal
 .container {
   width: 100%;
   height: 100%;
@@ -14,6 +15,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .card {
+
+  .card-conteudo {
+    border-radius: 5px;
+  }
+
+  // Coluna ações das tabelas
   .tabela {
     .iconeAcaoTabela {
       margin-right: 4px;
@@ -22,6 +29,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
+// Area dos components principais. Ex: Peças
 .container-drawer {
   height: 100%;
 
@@ -43,4 +51,69 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 50px 20px;
   }
 }
+
+.form {
+  width: 100%;
+  padding: 20px;
+
+  &-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 15px;
+  }
+
+  .btn-footer {
+    margin-left: 10px;
+  }
+
+  &-campo {
+    margin: {
+      right: 15px;
+      bottom: 10px;
+    };
+  }
+
+  &-large-col1 {
+    width: 12%;
+  }
+
+  &-large-col2 {
+    width: 24%;
+  }
+
+  &-large-col3 {
+    width: 36%;
+  }
+
+  &-large-col4 {
+    width: 49%;
+  }
+
+  &-large-col5 {
+    width: 61%;
+  }
+
+  &-large-col6 {
+    width: 75%;
+  }
+
+  &-large-col7 {
+    width: 77%;
+  }
+
+  &-large-col8 {
+    width: 100%;
+  }
+
+  @media (max-width: 1027px) {
+    &-full-col8 {
+      width: 100%;
+    }
+  }
+}
+
+
+
+
 
