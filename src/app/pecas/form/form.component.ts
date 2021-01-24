@@ -47,8 +47,33 @@ export class FormComponent extends BaseFormsComponent implements OnInit {
         this.preencherForm<Pecas>(this.peca);
       },
         (error: any) => {
-          console.log(error)
+          console.log(error);
         }
       );
+  }
+
+  onSubmit(e: Event): void {
+    e.preventDefault();
+    const peca = !!this.peca ? this.peca : <Pecas>{};
+    this.peca = this.preencherObjeto<Pecas>(peca);
+
+    if (!this.peca) {
+      alert('Favor preencher os campos');
+      return;
+    }
+
+    this.pecasService.enviar(this.codigo, this.peca, this.isEditar)
+      .pipe(take(1))
+      .subscribe((peca: Pecas | null) => {
+        this.peca = Object.assign({}, this.peca, peca);
+        this.isEditar = true;
+        this.codigo = !!this.peca?.id ? this.peca?.id : null;
+        this.preencherForm<Pecas>(this.peca);
+        this.habilitarCampo('id', false);
+      },
+        (error: any) => {
+          console.log(error);
+        }
+      )
   }
 }
