@@ -13,7 +13,7 @@ import { PecasService } from '../pecas.service';
 })
 export class ListaComponent implements OnInit {
   dataSource = new MatTableDataSource<Pecas>([])
-  displayedColumns: string[] = ['id', 'nome', 'descricao', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'descricao', 'fabricante', 'acoes'];
 
   constructor(
     private pecasService: PecasService,
