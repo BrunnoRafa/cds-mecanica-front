@@ -38,14 +38,25 @@ export class ListaComponent implements OnInit {
       },
         (error: any) => {
           console.log(error)
-        });
+        }
+      );
   }
 
   editar(id: string): void {
     this.router.navigate(['pecas/cadastro', id]);
   }
 
-  excluir(): void {
-    alert('clicou ex')
+  excluir(id: string): void {
+    this.pecasService.deletar(+id)
+      .pipe(take(1))
+      .subscribe((response: any) => {
+        this.listarPecas();
+        // incluir modal para exibir a msg
+        alert(response.mensagem);
+      },
+        (error: any) => {
+          console.log(error)
+        }
+      );
   }
 }
