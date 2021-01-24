@@ -45,9 +45,29 @@ export class BaseFormsComponent {
     });
   }
 
+  preencherObjeto<T>(data: T): T | null {
+    const dadosForm = this.formGroup.getRawValue();
+    Object.keys(dadosForm).forEach((chave: string) => {
+      data[chave as keyof T] = dadosForm[chave];
+    });
+    return data;
+  }
+
+  habilitarCampo(control: string, isHabilitado: boolean): void {
+    const campo = this.formGroup.get(control);
+    if (!campo) { return; }
+
+    if (isHabilitado) {
+      campo?.enable();
+    } else {
+      campo?.disable();
+    }
+  }
+
   onSubmit(e: Event): void {
     e.preventDefault();
     console.log('formGroup ', this.formGroup.value);
+    alert('Implementação do onSubmit, pendente');
   }
 
   limpar(e: Event): void {
