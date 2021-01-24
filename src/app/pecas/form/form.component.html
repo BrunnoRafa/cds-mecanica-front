@@ -1,7 +1,7 @@
 <form
   class="form"
   [formGroup]="formGroup"
-  (ngSubmit)="onSubmit()"
+  (ngSubmit)="onSubmit($event)"
 >
   <mat-form-field
     *ngIf="isEditar"
@@ -10,7 +10,6 @@
     <mat-label>Id</mat-label>
     <input
       matInput
-      [disabled]="isEditar"
       formControlName="id"
       placeholder="Id"
     >
@@ -23,7 +22,7 @@
       placeholder="Nome"
     >
   </mat-form-field>
-  <mat-form-field class="form-campo form-large-col4 form-full-col8">
+  <mat-form-field class="form-campo form-large-col3 form-full-col8">
     <mat-label>Descrição</mat-label>
     <input
       matInput
@@ -31,11 +30,24 @@
       placeholder="Descrição"
     >
   </mat-form-field>
+  <mat-form-field class="form-campo form-large-col1 form-full-col8">
+    <mat-label>Fabricante</mat-label>
+    <input
+      matInput
+      formControlName="fabricante"
+      placeholder="Fabricante"
+    >
+  </mat-form-field>
   <div class="form-footer">
     <button
       mat-raised-button
+      (click)="voltar($event)"
+      class="btn-footer"
+    >Voltar</button>
+    <button
+      mat-raised-button
       *ngIf="!isEditar"
-      (click)="limpar()"
+      (click)="limpar($event)"
       class="btn-footer"
     >Limpar</button>
     <button

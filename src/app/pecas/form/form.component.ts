@@ -1,49 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { BaseFormsComponent } from '../../shared/base-forms/base-forms.component';
+import { PecasService } from '../pecas.service';
+import { Pecas } from '../pecas.interface';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
-  isEditar = false;
-
-  formGroup = new FormGroup({});
+export class FormComponent extends BaseFormsComponent implements OnInit {
+  peca: Pecas | null = null;
 
   constructor(
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder
-  ) { }
+    formBuilder: FormBuilder,
+    route: ActivatedRoute,
+    private pecasService: PecasService
+  ) {
+    super(formBuilder, route);
+  }
 
   ngOnInit() {
     this.verificaParams();
     this.iniciarFormGroup();
-  }
-
-  verificaParams(): void {
-    this.route.params
-      .pipe(take(1))
-      .subscribe(params => {
-        this.isEditar = !!params.id;
-      });
+    this.buscarPeca();
   }
 
   iniciarFormGroup(): void {
-    this.formGroup = this.formBuilder.group({
-      id: [null],
+    this.formGroup = this.formBuilders.group({
+      id: [{ value: null, disabled: this.isEditar }],
       nome: [null],
-      descricao: [null]
+      descricao: [null],
+      fabricante: [null]
     });
   }
 
-  onSubmit(): void {
-    console.log(this.formGroup?.value)
-  }
+  buscarPeca(): void {
+    if (!this.isEditar || !this.codigo) { return; }
 
-  limpar(): void {
-    // Adicionar modal de confirmação antes de limpar os campos
-    this.formGroup?.reset();
+    this.pecasService.buscarPeca(this.codigo)
+      .pipe(take(1))
+      .subscribe((pecas: Pecas[]) => {
+        this.peca = pecas[0];
+        this.preencherForm<Pecas>(this.peca);
+      },
+        (error: any) => {
+          console.log(error)
+        }
+      );
   }
 }
