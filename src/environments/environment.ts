@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_PECAS: '/api-pecas'
+  PROXY_API_PECAS: '/api-pecas',
+  API_LOCAL_HOST: 'http://localhost:3000/api-cds'
 };
 
 /*
