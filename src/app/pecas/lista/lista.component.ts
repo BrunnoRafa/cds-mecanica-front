@@ -1,0 +1,51 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { Pecas } from '../pecas.interface';
+import { PecasService } from '../pecas.service';
+
+@Component({
+  selector: 'app-lista',
+  templateUrl: './lista.component.html',
+  styleUrls: ['./lista.component.scss']
+})
+export class ListaComponent implements OnInit {
+  dataSource = new MatTableDataSource<Pecas>([])
+  displayedColumns: string[] = ['id', 'nome', 'descricao', 'fabricante', 'acoes'];
+
+  constructor(
+    private pecasService: PecasService,
+    private router: Router
+  ) { }
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+
+  ngOnInit() {
+    this.listarPecas();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  listarPecas(): void {
+    this.pecasService.listar()
+      .pipe(take(1))
+      .subscribe((pecas: Pecas[]) => {
+        this.dataSource.data = pecas
+      },
+        (error: any) => {
+          console.log(error)
+        });
+  }
+
+  editar(id: string): void {
+    this.router.navigate(['pecas/cadastro', id]);
+  }
+
+  excluir(): void {
+    alert('clicou ex')
+  }
+}
