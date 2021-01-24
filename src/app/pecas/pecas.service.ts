@@ -12,6 +12,10 @@ export class PecasService {
   constructor(private httpBuilder: HttpBuilder) { }
 
   listar(): Observable<Pecas[]> {
-    return this.httpBuilder.get<Pecas[]>(environment.API_PECAS);
+    return this.httpBuilder.get<Pecas[]>(`${environment.API_LOCAL_HOST}/pecas`);
+  }
+
+  buscarPeca(codigo: number): Observable<Pecas[]> {
+    return this.httpBuilder.get(`${environment.API_LOCAL_HOST}/pecas/${codigo}`);
   }
 }
