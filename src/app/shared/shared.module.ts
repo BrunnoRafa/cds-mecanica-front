@@ -11,11 +11,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BaseFormsComponent } from './base-forms/base-forms.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ModalAlertaComponent } from './modal-alerta/modal-alerta.component';
 
 @NgModule({
   declarations: [
     ModalComponent,
-    BaseFormsComponent
+    ModalAlertaComponent,
+    BaseFormsComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,8 @@ import { BaseFormsComponent } from './base-forms/base-forms.component';
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -37,9 +42,12 @@ import { BaseFormsComponent } from './base-forms/base-forms.component';
     MatSidenavModule,
     MatButtonModule,
     MatInputModule,
+    MatProgressSpinnerModule,
 
     ModalComponent,
+    ModalAlertaComponent,
     BaseFormsComponent
-  ]
+  ],
+  providers: []
 })
 export class SharedModule { }

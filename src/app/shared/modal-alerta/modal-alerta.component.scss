@@ -33,6 +33,11 @@
     display: flex;
     text-transform: uppercase;
 
+    &-titulo {
+      width: 100%;
+      text-align: center;
+    }
+
     &-fechar {
       position: absolute;
       top: -2px;

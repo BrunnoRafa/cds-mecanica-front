@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { CarregandoObservable } from '../../shared/spinner/carregando.observable';
+import { ModalAlertaService } from '../../shared/modal-alerta/modal-alerta.service';
 import { Pecas } from '../pecas.interface';
 import { PecasService } from '../pecas.service';
 
@@ -17,7 +19,9 @@ export class ListaComponent implements OnInit {
 
   constructor(
     private pecasService: PecasService,
-    private router: Router
+    private router: Router,
+    private modalAlertaService: ModalAlertaService,
+    private carregando$: CarregandoObservable
   ) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -31,13 +35,15 @@ export class ListaComponent implements OnInit {
   }
 
   listarPecas(): void {
+
     this.pecasService.listar()
       .pipe(take(1))
       .subscribe((pecas: Pecas[]) => {
-        this.dataSource.data = pecas
+        this.dataSource.data = pecas;
       },
-        (error: any) => {
-          console.log(error)
+        (error) => {
+          this.carregando$.encerrarCarregando();
+          this.modalAlertaService.exibirAlerta(error);
         }
       );
   }
@@ -54,8 +60,9 @@ export class ListaComponent implements OnInit {
         // incluir modal para exibir a msg
         alert(response.mensagem);
       },
-        (error: any) => {
-          console.log(error)
+        (error) => {
+          this.carregando$.encerrarCarregando();
+          this.modalAlertaService.exibirAlerta(error);
         }
       );
   }

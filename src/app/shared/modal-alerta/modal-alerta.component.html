@@ -1,13 +1,10 @@
 <div
-  *ngIf="modal?.mostraModal"
+  *ngIf="modal?.mostrarAlerta"
   class="modalBackground"
 >
-  <div
-    class="modal"
-    [ngClass]="{'modal-alerta': modal?.modalAlerta}"
-  >
+  <div class="modal modal-alerta">
     <div class="modal-header">
-      <ng-content select="header"></ng-content>
+      <span class="modal-header-titulo">{{ modal?.data?.titulo }}</span>
       <span
         class="modal-header-fechar"
         (click)="fechar()"
@@ -19,17 +16,16 @@
       </span>
     </div>
     <div class="modal-main">
-      <ng-content select="main"></ng-content>
+      <span>Código erro: {{ modal?.data?.codigoErro }}</span>
+      <p *ngFor="let msg of modal?.data?.mensagens">
+        {{ msg }}
+      </p>
     </div>
     <div class="modal-footer">
       <button
-        *ngIf="modal?.modalAlerta; else footerPersonalizado"
         mat-raised-button
         (click)="fechar()"
       >Fechar</button>
-      <ng-template #footerPersonalizado>
-        <ng-content select="footer"></ng-content>
-      </ng-template>
     </div>
   </div>
 </div>
