@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
+import { SharedModule } from './shared/shared.module';
+import { CarregandoModule } from './shared/spinner/carregando.module';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,11 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+
+    SharedModule,
+    CarregandoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

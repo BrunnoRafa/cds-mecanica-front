@@ -5,6 +5,8 @@ import { take } from 'rxjs/operators';
 import { BaseFormsComponent } from '../../shared/base-forms/base-forms.component';
 import { PecasService } from '../pecas.service';
 import { Pecas } from '../pecas.interface';
+import { ModalAlertaService } from 'src/app/shared/modal-alerta/modal-alerta.service';
+import { CarregandoObservable } from 'src/app/shared/spinner/carregando.observable';
 
 @Component({
   selector: 'app-form',
@@ -17,7 +19,9 @@ export class FormComponent extends BaseFormsComponent implements OnInit {
   constructor(
     formBuilder: FormBuilder,
     route: ActivatedRoute,
-    private pecasService: PecasService
+    private pecasService: PecasService,
+    private carregando$: CarregandoObservable,
+    private modalAlertaService: ModalAlertaService
   ) {
     super(formBuilder, route);
   }
@@ -47,7 +51,8 @@ export class FormComponent extends BaseFormsComponent implements OnInit {
         this.preencherForm<Pecas>(this.peca);
       },
         (error: any) => {
-          console.log(error);
+          this.carregando$.encerrarCarregando();
+          this.modalAlertaService.exibirAlerta(error);
         }
       );
   }
@@ -72,7 +77,8 @@ export class FormComponent extends BaseFormsComponent implements OnInit {
         this.habilitarCampo('id', false);
       },
         (error: any) => {
-          console.log(error);
+          this.carregando$.encerrarCarregando();
+          this.modalAlertaService.exibirAlerta(error);
         }
       )
   }

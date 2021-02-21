@@ -1,3 +1,25 @@
 <div class="container">
   <router-outlet></router-outlet>
+  <app-spinner [spinnerAtivo]="carregando"></app-spinner>
+  <app-modal-alerta></app-modal-alerta>
+  <!-- <app-modal>
+  <header>
+    {{ dataAlerta?.titulo }}
+  </header>
+  <main>
+    <p *ngFor="let msg of dataAlerta?.mensagem">
+      {{ msg }}
+    </p>
+  </main>
+  <footer>
+    <button
+      mat-raised-button
+      (click)="fechar()"
+    >teste</button>
+    <button
+      mat-raised-button
+      (click)="fechar()"
+    >teste</button>
+  </footer>
+</app-modal> -->
 </div>
