@@ -29,9 +29,9 @@ export class ModalAlertaService {
     if (data.status === 0) {
       dataAlerta.codigoErro = 500;
       dataAlerta.mensagens = ['O Servidor se comportou de forma inesperada.'];
-      return data;
+      return dataAlerta;
     }
 
-    return data;
+    return dataAlerta;
   }
 }
