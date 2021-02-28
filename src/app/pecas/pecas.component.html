@@ -1,0 +1,41 @@
+<mat-drawer-container class="container-drawer">
+  <mat-drawer
+    mode="side"
+    opened
+    class="menu"
+  >
+    <h1 class="titulo">Peças</h1>
+    <nav>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('')"
+      >Peças</button>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('lista')"
+      >Lista de Peças</button>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('cadastro')"
+      >Cadastrar nova Peças</button>
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content class="conteudo">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ titulo_card }}</mat-card-title>
+        <mat-card-subtitle>
+          Area para manutenção das peças dadastradas no sistema.
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="mat-elevation-z8 card-conteudo">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>

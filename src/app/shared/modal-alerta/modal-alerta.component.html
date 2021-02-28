@@ -1,0 +1,31 @@
+<div
+  *ngIf="modal?.mostrarAlerta"
+  class="modalBackground"
+>
+  <div class="modal modal-alerta">
+    <div class="modal-header">
+      <span class="modal-header-titulo">{{ modal?.data?.titulo }}</span>
+      <span
+        class="modal-header-fechar"
+        (click)="fechar()"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Fechar"
+        >close</mat-icon>
+      </span>
+    </div>
+    <div class="modal-main">
+      <span *ngIf="modal?.isError">Código erro: {{ modal?.data?.codigoErro }}</span>
+      <p *ngFor="let msg of modal?.data?.mensagens">
+        {{ msg }}
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button
+        mat-raised-button
+        (click)="fechar()"
+      >Fechar</button>
+    </div>
+  </div>
+</div>

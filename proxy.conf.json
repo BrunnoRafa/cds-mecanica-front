@@ -1,0 +1,11 @@
+{
+  "/api-pecas/*": {
+    "target": "http://localhost:3000/api-cds/pecas",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api-pecas": ""
+    }
+  }
+}

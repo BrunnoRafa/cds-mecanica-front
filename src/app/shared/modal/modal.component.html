@@ -1,0 +1,35 @@
+<div
+  *ngIf="modal?.mostraModal"
+  class="modalBackground"
+>
+  <div
+    class="modal"
+    [ngClass]="{'modal-alerta': modal?.modalAlerta}"
+  >
+    <div class="modal-header">
+      <ng-content select="header"></ng-content>
+      <span
+        class="modal-header-fechar"
+        (click)="fechar()"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Fechar"
+        >close</mat-icon>
+      </span>
+    </div>
+    <div class="modal-main">
+      <ng-content select="main"></ng-content>
+    </div>
+    <div class="modal-footer">
+      <button
+        *ngIf="modal?.modalAlerta; else footerPersonalizado"
+        mat-raised-button
+        (click)="fechar()"
+      >Fechar</button>
+      <ng-template #footerPersonalizado>
+        <ng-content select="footer"></ng-content>
+      </ng-template>
+    </div>
+  </div>
+</div>

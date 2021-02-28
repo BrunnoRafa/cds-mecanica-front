@@ -1,0 +1,57 @@
+.modalBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: rgba($color: #000000, $alpha: 0.3);
+  z-index: 10;
+}
+
+.modal {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.4);
+  background-color: #fff;
+
+  &-alerta {
+    width: 500px;
+    height: 300px;
+  }
+
+  &-header {
+    position: relative;
+    display: flex;
+    text-transform: uppercase;
+
+    &-titulo {
+      width: 100%;
+      text-align: center;
+    }
+
+    &-fechar {
+      position: absolute;
+      top: -2px;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+
+  &-main {
+    // conteudo
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
