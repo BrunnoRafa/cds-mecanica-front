@@ -1,0 +1,59 @@
+<form
+  class="form"
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit($event)"
+>
+  <mat-form-field
+    *ngIf="isEditar"
+    class="form-campo form-large-col1 form-full-col8"
+  >
+    <mat-label>Id</mat-label>
+    <input
+      matInput
+      formControlName="id"
+      placeholder="Id"
+    >
+  </mat-form-field>
+  <mat-form-field class="form-campo form-large-col2 form-full-col8">
+    <mat-label>Serviço</mat-label>
+    <input
+      matInput
+      formControlName="servico"
+      placeholder="Serviço"
+    >
+  </mat-form-field>
+  <mat-form-field class="form-campo form-large-col3 form-full-col8">
+    <mat-label>Descrição</mat-label>
+    <input
+      matInput
+      formControlName="descricao"
+      placeholder="Descrição"
+    >
+  </mat-form-field>
+  <!-- <mat-form-field class="form-campo form-large-col1 form-full-col8">
+    <mat-label>Fabricante</mat-label>
+    <input
+      matInput
+      formControlName="fabricante"
+      placeholder="Fabricante"
+    >
+  </mat-form-field> -->
+  <div class="form-footer">
+    <button
+      mat-raised-button
+      (click)="voltar($event)"
+      class="btn-footer"
+    >Voltar</button>
+    <button
+      mat-raised-button
+      *ngIf="!isEditar"
+      (click)="limpar($event)"
+      class="btn-footer"
+    >Limpar</button>
+    <button
+      mat-raised-button
+      type="submit"
+      class="btn-footer"
+    >Salvar</button>
+  </div>
+</form>

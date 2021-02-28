@@ -5,12 +5,20 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'pecas',
     loadChildren: () => import('./pecas/pecas.module').then(m => m.PecasModule)
+  },
+  {
+    path: 'servicos',
+    loadChildren: () => import('./servicos/servicos.module').then(m => m.ServicosModule)
   }
 ];
 

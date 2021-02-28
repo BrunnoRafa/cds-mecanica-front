@@ -4,18 +4,28 @@
     opened
     class="menu"
   >
-    <h1 class="titulo">Home</h1>
+    <h1 class="titulo">Serviços</h1>
     <nav>
       <button
         mat-button
         class="btn-menu"
-        (click)="navegar('pecas')"
-      >Peças</button>
+        (click)="irHome()"
+      >Home</button>
       <button
         mat-button
         class="btn-menu"
-        (click)="navegar('servicos')"
+        (click)="navegar('')"
       >Serviços</button>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('lista')"
+      >Lista de Serviços</button>
+      <button
+        mat-button
+        class="btn-menu"
+        (click)="navegar('cadastro')"
+      >Incluir novo serviço</button>
     </nav>
   </mat-drawer>
   <mat-drawer-content class="conteudo">
@@ -23,9 +33,13 @@
       <mat-card-header>
         <mat-card-title>{{ titulo_card }}</mat-card-title>
         <mat-card-subtitle>
+          Area para manutenção dos serviços registrados no sistema.
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
+        <div class="mat-elevation-z8 card-conteudo">
+          <router-outlet></router-outlet>
+        </div>
       </mat-card-content>
     </mat-card>
   </mat-drawer-content>

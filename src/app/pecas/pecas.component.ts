@@ -12,7 +12,11 @@ export class PecasComponent {
   constructor(private router: Router) { }
 
   navegar(rota: string): void {
-    this.titulo_card = rota === 'cadastro' ? 'Peças / Cadastro' : 'Peças';
+    this.titulo_card = (rota === 'cadastro') ? 'Peças / Cadastro' : 'Peças';
     this.router.navigate([`/pecas/${rota}`]);
+  }
+
+  irHome(): void {
+    this.router.navigate(['/home']);
   }
 }
