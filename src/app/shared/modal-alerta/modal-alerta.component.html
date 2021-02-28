@@ -16,7 +16,7 @@
       </span>
     </div>
     <div class="modal-main">
-      <span>Código erro: {{ modal?.data?.codigoErro }}</span>
+      <span *ngIf="modal?.isError">Código erro: {{ modal?.data?.codigoErro }}</span>
       <p *ngFor="let msg of modal?.data?.mensagens">
         {{ msg }}
       </p>
